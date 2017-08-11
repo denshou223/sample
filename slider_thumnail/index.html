@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="js/slick/slick.css">
+    <style type="text/css">
+        .main {
+          width: 1000px;
+          margin: 50px auto;
+
+        }
+        @media screen and (max-width: 736px)  {
+            .main {
+                width: 100%;
+                margin: auto;
+                padding:0 10px;
+                box-sizing: border-box;
+            }
+        }
+
+        .slider-for .slick-slide img{
+            width: 100%;
+            height: auto;
+            margin: 0 0 20px;
+        }
+
+        .slider-nav{
+            width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        @media screen and (max-width: 736px)  {
+            .slider-nav{
+                width: 90%;
+                margin: 0 auto;
+                position: relative;
+            }
+        }
+
+        .slider-nav li {
+            margin: 0 10px;
+        }
+
+        @media screen and (max-width: 736px)  {
+            .slider-nav li {
+                margin: 0 3px;
+            }
+        }
+
+        .slider-nav .slick-prev{
+            border: none;
+            background: url(./img/prev-arrow.png) center center no-repeat ;
+            background-size: 100%;
+            text-indent: -9999px;
+            width: 10px;
+            height: 16px;
+            position: absolute;
+            left: -40px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .slider-nav .slick-next{
+            border: none;
+            background: url(./img/next-arrow.png) center center no-repeat ;
+            background-size: 100%;
+            text-indent: -9999px;
+            width: 10px;
+            height: 16px;
+            position: absolute;
+            right: -40px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <div class="inner-content">
+              <ul class="slider slider-for">
+                <li><img src="img/img01.jpg" /></li>
+                <li><img src="img/img02.jpg" /></li>
+                <li><img src="img/img03.jpg" /></li>
+                <li><img src="img/img04.jpg" /></li>
+                <li><img src="img/img05.jpg" /></li>
+                <li><img src="img/img06.jpg" /></li>
+                <li><img src="img/img07.jpg" /></li>
+                <li><img src="img/img08.jpg" /></li>
+                <li><img src="img/img09.jpg" /></li>
+                <li><img src="img/img10.jpg" /></li>
+              </ul>
+              <ul class="slider slider-nav">
+                <li><img src="img/img01.jpg" /></li>
+                <li><img src="img/img02.jpg" /></li>
+                <li><img src="img/img03.jpg" /></li>
+                <li><img src="img/img04.jpg" /></li>
+                <li><img src="img/img05.jpg" /></li>
+                <li><img src="img/img06.jpg" /></li>
+                <li><img src="img/img07.jpg" /></li>
+                <li><img src="img/img08.jpg" /></li>
+                <li><img src="img/img09.jpg" /></li>
+                <li><img src="img/img10.jpg" /></li>
+              </ul>
+            </div>
+        </div><!-- /main -->
+    </div>
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/slick/slick.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                asNavFor: '.slider-nav'
+            });
+            $('.slider-nav').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                focusOnSelect: true
+            });
+          });
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="js/slick/slick.css">
+    <style type="text/css">
+      canvas {
+          width: 320px;
+          height: 180px;
+      }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <div class="inner-content">
+              <ul class="slider slider-for">
+                <div id="video-area"></div>
+                <div id="canvas-area"></div>
+              </ul>
+            </div>
+        </div><!-- /main -->
+    </div>
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      // videoの埋め込み
+      var video = document.createElement('video');
+      document.getElementById('video-area').appendChild(video);
+      // 動画の表示サイズ
+      var videoWidth = 320;
+      var videoHeight = 180;
+       // 動画のビットレート
+      var bitrate = 25;
+       
+      // canvasの埋め込み
+      var canvas = document.createElement('canvas');
+      document.getElementById('canvas-area').appendChild(canvas);
+       
+      // 動画のメタデータ読み込み後
+      video.addEventListener('loadedmetadata', function() {
+          // canvasの準備
+          if(!canvas || !canvas.getContext) return false;
+          var ctx = canvas.getContext('2d');
+       
+          var elapsedTime = 0; // 動画の経過時間
+          var lastTime = new Date().getTime(); // 前回のgetTime()
+          setInterval(function() {
+              var currentTime = new Date().getTime(); // 現在のgetTime()
+              var df = currentTime - lastTime; // 前回と現在のgetTime()の差
+              elapsedTime += df / 1000; // ミリ秒単位を秒単位にして、経過時間に追加
+              video.currentTime = elapsedTime; // videoに経過時間を反映
+              lastTime = currentTime; // 前回のgetTime()を更新
+              // 経過時間が動画の長さ以上になった時、経過時間を0に戻す
+              if(elapsedTime >= video.duration) {
+                  elapsedTime = 0;
+              }
+              // canvasの描画
+              ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
+          }, 1000 / bitrate);
+      });
+       
+      // 動画読み込み
+      video.src = 'movie.mp4';
+      video.load();
+    </script>
+</body>
+</html>
